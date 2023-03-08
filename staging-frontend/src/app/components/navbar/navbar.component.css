@@ -1,0 +1,16 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.navbar div{
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+#flag{
+    max-height: 30px;
+    margin-right: 5px;
+}
