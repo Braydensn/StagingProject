@@ -9,16 +9,23 @@ export class FlagService {
 
   flagUrl = "https://countryflagsapi.com/png";
 
+  flag?: Observable<Blob>;
+
   constructor(private http: HttpClient) { }
 
   getFlag(countryCode: string): Observable<any>{
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Accept': 'image/jpeg',
-        'Access-Control-Allow-Origin': 'http://*:4200'
-      }),
-      responseType: 'blob' as 'json'
-    };
-    return this.http.get<Observable<Blob>>(`${this.flagUrl}/${countryCode}`, httpOptions);
+    if(this.flag == undefined){
+      let httpOptions = {
+        headers: new HttpHeaders({
+          'Accept': 'image/jpeg',
+          'Access-Control-Allow-Origin': 'http://*:4200'
+        }),
+        responseType: 'blob' as 'json'
+      };
+      this.flag = this.http.get<Blob>(`${this.flagUrl}/${countryCode}`, httpOptions);
+      return this.flag;
+    }else{
+      return this.flag
+    }
   }
 }

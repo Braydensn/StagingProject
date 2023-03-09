@@ -1,1 +1,15 @@
-<p>product-detail works!</p>
+<app-navbar></app-navbar>
+<div id="productDetails">
+    <div id="imageAndPrice">
+        <div id="image">
+            <img [src]="product.image">
+            <h4>{{product.name}}</h4>
+        </div>
+        <div id="priceAndCart">
+            <h3>{{product.price | currency}}</h3>
+            <input #quantity type="number" value="1">
+            <button class="btn btn-warning" (click)="addToCart($event, quantity.value)">Add to cart</button>
+        </div>
+    </div>
+    <div id="description">{{product.description}}</div>
+</div>

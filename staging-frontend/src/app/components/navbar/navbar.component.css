@@ -2,15 +2,26 @@
     display: flex;
     justify-content: space-between;
     padding: 5px 20px;
+    height: 50px;
 }
 
 .navbar div{
     display: flex;
     align-items: center;
-    width: 200px;
+}
+
+#countryDisplay{
+    border: rgb(173, 173, 173) solid 1px;
+    border-radius: 5px;
+    padding: 3px;
+    width: 95px;
 }
 
 #flag{
     max-height: 30px;
     margin-right: 5px;
+}
+
+.btn-light{
+    border:1px rgb(173, 173, 173) solid
 }

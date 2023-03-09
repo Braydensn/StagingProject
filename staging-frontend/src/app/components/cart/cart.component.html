@@ -1,1 +1,38 @@
-<p>cart works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <h2 class="px-3 my-4">Cart</h2>
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-3 fw-bold">Image</div>
+                <div class="col-3 fw-bold">Name</div>
+                <div class="col-3 fw-bold">Quantity</div>
+                <div class="col-3 fw-bold">Price</div>
+            </div>
+        </div>
+        <div class="card-body" *ngIf="cartProducts.length == 0; else cart">
+            <h4>There are no items in your cart.</h4>
+        </div>
+        <ng-template #cart>
+            <div class="card-body">
+                <div class="row" *ngFor="let product of cartProducts; let last = last;">
+                    <div class="col-3 product-info"><img [src]="product.product.image"></div>
+                    <div class="col-3 product-info">{{product.product.name}}</div>
+                    <div class="col-3 product-info">{{product.quantity}}</div>
+                    <div class="col-3 product-info">{{product.quantity*product.product.price | currency}}</div>
+                    <div class="border-bottom my-5" *ngIf="!last"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-9"></div>
+                    <div class="col-3 checkout">
+                        <h5>Total: {{getTotalCost() | currency}}</h5>
+                        <button class="btn btn-primary mx-2" [routerLink]="['/checkout']">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+
+</div>

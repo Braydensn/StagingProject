@@ -1,13 +1,16 @@
 <nav class="navbar navbar-light bg-light">
-    <h4 routerLink="/home" class="hover">
-        Staging Savings
-    </h4>
-
+    <div>
+        <h4 routerLink="/home" class="hover">
+            Staging Style
+        </h4>
+        <button class="btn btn-light my-0 mx-3" [routerLink]="['/home']">Home</button>
+    </div>
 
     <div>
-        <div id="countryDisplay">
-            <img [src]="countryImg" id="flag"><h6>{{country}}</h6>
+        <div id="countryDisplay" class="mx-1">
+            <img [src]="countryImg" id="flag"><h6 style="margin:auto">{{country}}</h6>
         </div>
-        <button class="btn btn-outline-danger my-2 my-sm-0 mx-1" (click)="logout();">Logout</button>
+        <button class="btn btn-light my-0 mx-1" [routerLink]="['/cart']">Cart</button>
+        <button class="btn btn-outline-danger my-sm-0 mx-1" (click)="logout();">Logout</button>
     </div>
 </nav>

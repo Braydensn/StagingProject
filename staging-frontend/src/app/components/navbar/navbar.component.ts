@@ -27,7 +27,8 @@ export class NavbarComponent {
   }
 
   logout(){
-    this.cookies.delete("user");
+    this.cookies.delete("user", "/");
+    delete this.flagService.flag;
     this.router.navigate(["login"]);
   }
 

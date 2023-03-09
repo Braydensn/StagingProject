@@ -1,0 +1,16 @@
+img{
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.product-info{
+    line-height: 200px;
+}
+
+.checkout{
+    display: flex;
+}
+
+.container{
+    margin-bottom: 50px;
+}
