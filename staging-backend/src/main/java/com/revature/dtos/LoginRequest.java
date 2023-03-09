@@ -1,5 +1,8 @@
 package com.revature.dtos;
 
+/**
+ * This DTO contains all of the information that will be sent with a login request
+ */
 public class LoginRequest {
     private String email;
     private String password;

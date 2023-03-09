@@ -2,6 +2,7 @@
     <main class="form-signin w-25 m-auto">
       <h2>Staging Style</h2>
       <form [formGroup]="registerForm">
+        <div *ngIf="error" class="alert alert-danger p-1">An account with that email address already exists</div>
   
         <div class="form-floating">
           <input type="email" class="form-control" formControlName="email" id="floatingInput"

@@ -1,5 +1,8 @@
 package com.revature.dtos;
 
+/**
+ * This DTO contains all the information that will be sent with a registration request
+ */
 public class RegisterRequest {
     private String email;
     private String password;

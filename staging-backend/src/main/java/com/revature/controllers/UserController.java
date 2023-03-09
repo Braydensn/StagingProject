@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+/**
+ * This class handles HTTP requests sent to the /user endpoint
+ */
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"}, allowCredentials = "true", exposedHeaders = "Authorization")
@@ -27,6 +30,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * Registers a new user into the database
+     * @param register The request containing all of the user information needed to create a new user
+     * @return A response entity containing a copy of the newly created user
+     * @throws EmailTakenException if the email sent is already used by an existing user
+     */
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterRequest register) throws EmailTakenException {
         User newUser = new User(register.getEmail(),
@@ -39,6 +48,13 @@ public class UserController {
         return ResponseEntity.ok(returnedUser);
     }
 
+    /**
+     * Authenticates a user's credentials to allow them to enter the site
+     * @param login the request containing the user's credentials
+     * @param response The response sent back to the client, used to add cookies to the response
+     * @return A response entity containing a copy of the logged-in user
+     * @throws InvalidLoginException If the email or password sent were incorrect
+     */
     @PostMapping("/login")
     public ResponseEntity<User> login(@RequestBody LoginRequest login, HttpServletResponse response) throws InvalidLoginException {
         Optional<User> user = userService.login(login.getEmail(), login.getPassword());

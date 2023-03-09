@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Objects;
 
+/**
+ * Database model for a product
+ */
 @Data
 @Entity
 @NoArgsConstructor

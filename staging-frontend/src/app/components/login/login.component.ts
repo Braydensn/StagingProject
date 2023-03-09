@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
 
+  error: boolean = false;
+
   loginForm = new UntypedFormGroup({
     email: new UntypedFormControl(''),
     password: new UntypedFormControl('')
@@ -21,7 +23,7 @@ export class LoginComponent {
   onSubmit(){
     this.userService.login(this.loginForm.get("email")?.value, this.loginForm.get("password")?.value).subscribe(
       (user) => {this.userService.currentUser = {id: user.id!, country: user.country!}; this.userService.getCurrentUser(); console.log(this.userService.currentUser);},
-      (err) => {console.log(err);},
+      (err) => {console.log(err); this.error = true;},
       () => this.router.navigate(["home"])
     );
   }

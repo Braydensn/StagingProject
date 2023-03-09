@@ -19,6 +19,7 @@ export class RegisterComponent {
   })
 
   countries = countries;
+  error: boolean = false;
 
   constructor(private userService: UserService, private router: Router){}
 
@@ -26,7 +27,7 @@ export class RegisterComponent {
     this.userService.register(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value, 
       this.registerForm.get('fname')?.value, this.registerForm.get('lname')?.value, this.registerForm.get('country')?.value).subscribe(
         () => console.log("New user registered"),
-        (err) => console.log(err),
+        (err) => {console.log(err); this.error = true},
         () => this.router.navigate(['login'])
     );
   }
