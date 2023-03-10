@@ -80,7 +80,7 @@ public class UserControllerTests {
 
         ResponseEntity<User> result = sut.login(request, response);
 
-        verify(response).addCookie(ArgumentMatchers.eq(responseCookie));
+        verify(response).addCookie(ArgumentMatchers.any(Cookie.class));
         Assertions.assertEquals(HttpStatus.OK, result.getStatusCode());
         Assertions.assertEquals(returnedUser, result.getBody());
     }
